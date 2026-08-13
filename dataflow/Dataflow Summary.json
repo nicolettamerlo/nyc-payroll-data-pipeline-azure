@@ -32,11 +32,7 @@
 						"referenceName": "ds_adls_dirstaging",
 						"type": "DatasetReference"
 					},
-					"name": "ADLSdirstaging",
-					"rejectedDataLinkedService": {
-						"referenceName": "LS_ADLS_Gen2",
-						"type": "LinkedServiceReference"
-					}
+					"name": "ADLSdirstaging"
 				}
 			],
 			"transformations": [
