@@ -1265,8 +1265,8 @@
 						"     skipDuplicateMapInputs: true,",
 						"     skipDuplicateMapOutputs: true,",
 						"     mapColumn(",
-						"          AgencyName,",
 						"          FiscalYear,",
+						"          AgencyName,",
 						"          TotalPaid",
 						"     )) ~> ADLSdirstaging"
 					]
