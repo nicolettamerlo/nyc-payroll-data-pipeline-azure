@@ -1,0 +1,21 @@
+{
+	"name": "nycpayroll",
+	"properties": {
+		"globalParameters": {
+			"global_param_fiscalyear": {
+				"type": "int",
+				"value": 2020
+			}
+		},
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "e2d16fcf-98d0-41a4-995f-7c78b37b7922",
+		"tenantId": "f958e84a-92b8-439f-a62d-4f45996b6d07"
+	}
+}
