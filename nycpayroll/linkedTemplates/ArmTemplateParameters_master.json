@@ -1,0 +1,45 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "nycpayroll"
+		},
+		"AzureSynapseAnalytics1_password": {
+			"value": ""
+		},
+		"LS_ADLS_Gen2_accountKey": {
+			"value": ""
+		},
+		"LS_SQL_password": {
+			"value": ""
+		},
+		"AzureSynapseAnalytics1_properties_typeProperties_server": {
+			"value": "synycpayroll-ondemand.sql.azuresynapse.net"
+		},
+		"AzureSynapseAnalytics1_properties_typeProperties_database": {
+			"value": "udacity"
+		},
+		"AzureSynapseAnalytics1_properties_typeProperties_userName": {
+			"value": "sqladminuser"
+		},
+		"LS_ADLS_Gen2_properties_typeProperties_url": {
+			"value": "https://adlsnycpayrollnicolettam.dfs.core.windows.net/"
+		},
+		"LS_SQL_properties_typeProperties_server": {
+			"value": "dbnycpayrollserver.database.windows.net"
+		},
+		"LS_SQL_properties_typeProperties_database": {
+			"value": "db_nycpayroll"
+		},
+		"LS_SQL_properties_typeProperties_userName": {
+			"value": "udacityadmin"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
