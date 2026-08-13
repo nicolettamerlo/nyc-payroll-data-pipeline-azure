@@ -281,8 +281,8 @@
 								"datasetParameters": {
 									"source1": {},
 									"source2": {},
-									"sink2": {},
-									"sink3": {}
+									"SummaryTableSQL": {},
+									"ADLSdirstaging": {}
 								}
 							},
 							"staging": {},
@@ -1117,17 +1117,21 @@
 					"sinks": [
 						{
 							"dataset": {
-								"referenceName": "ds_adls_dirstaging",
+								"referenceName": "ds_sql_payroll_summary",
 								"type": "DatasetReference"
 							},
-							"name": "sink2"
+							"name": "SummaryTableSQL"
 						},
 						{
 							"dataset": {
 								"referenceName": "ds_adls_dirstaging",
 								"type": "DatasetReference"
 							},
-							"name": "sink3"
+							"name": "ADLSdirstaging",
+							"rejectedDataLinkedService": {
+								"referenceName": "LS_ADLS_Gen2",
+								"type": "LinkedServiceReference"
+							}
 						}
 					],
 					"transformations": [
@@ -1231,6 +1235,30 @@
 						"     TotalPaid = sum(TotalPaid)) ~> aggregate1",
 						"aggregate1 sink(allowSchemaDrift: true,",
 						"     validateSchema: false,",
+						"     input(",
+						"          FiscalYear as integer,",
+						"          AgencyName as string,",
+						"          TotalPaid as double",
+						"     ),",
+						"     deletable:false,",
+						"     insertable:true,",
+						"     updateable:false,",
+						"     upsertable:false,",
+						"     truncate:true,",
+						"     format: 'table',",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true,",
+						"     errorHandlingOption: 'stopOnFirstError',",
+						"     mapColumn(",
+						"          FiscalYear,",
+						"          AgencyName,",
+						"          TotalPaid",
+						"     ),",
+						"     preCommands: [],",
+						"     postCommands: []) ~> SummaryTableSQL",
+						"aggregate1 sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     truncate: true,",
 						"     umask: 0022,",
 						"     preCommands: [],",
 						"     postCommands: [],",
@@ -1240,21 +1268,16 @@
 						"          AgencyName,",
 						"          FiscalYear,",
 						"          TotalPaid",
-						"     )) ~> sink2",
-						"aggregate1 sink(allowSchemaDrift: true,",
-						"     validateSchema: false,",
-						"     umask: 0022,",
-						"     preCommands: [],",
-						"     postCommands: [],",
-						"     skipDuplicateMapInputs: true,",
-						"     skipDuplicateMapOutputs: true) ~> sink3"
+						"     )) ~> ADLSdirstaging"
 					]
 				}
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/ds_adls_payroll_2020')]",
 				"[concat(variables('factoryId'), '/datasets/ds_sql_payroll_2021')]",
-				"[concat(variables('factoryId'), '/datasets/ds_adls_dirstaging')]"
+				"[concat(variables('factoryId'), '/datasets/ds_sql_payroll_summary')]",
+				"[concat(variables('factoryId'), '/datasets/ds_adls_dirstaging')]",
+				"[concat(variables('factoryId'), '/linkedServices/LS_ADLS_Gen2')]"
 			]
 		},
 		{

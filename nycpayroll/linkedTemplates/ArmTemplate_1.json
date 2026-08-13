@@ -406,8 +406,8 @@
 								"datasetParameters": {
 									"source1": {},
 									"source2": {},
-									"sink2": {},
-									"sink3": {}
+									"SummaryTableSQL": {},
+									"ADLSdirstaging": {}
 								}
 							},
 							"staging": {},
