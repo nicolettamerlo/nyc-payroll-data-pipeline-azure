@@ -368,6 +368,7 @@
 						"fileSystem": "adlsnycpayroll-nicoletta-m"
 					},
 					"columnDelimiter": ",",
+					"rowDelimiter": "\n",
 					"escapeChar": "\\",
 					"firstRowAsHeader": true,
 					"quoteChar": "\""
@@ -1130,11 +1131,7 @@
 								"referenceName": "ds_adls_dirstaging",
 								"type": "DatasetReference"
 							},
-							"name": "ADLSdirstaging",
-							"rejectedDataLinkedService": {
-								"referenceName": "LS_ADLS_Gen2",
-								"type": "LinkedServiceReference"
-							}
+							"name": "ADLSdirstaging"
 						}
 					],
 					"transformations": [
@@ -1279,8 +1276,7 @@
 				"[concat(variables('factoryId'), '/datasets/ds_adls_payroll_2020')]",
 				"[concat(variables('factoryId'), '/datasets/ds_sql_payroll_2021')]",
 				"[concat(variables('factoryId'), '/datasets/ds_sql_payroll_summary')]",
-				"[concat(variables('factoryId'), '/datasets/ds_adls_dirstaging')]",
-				"[concat(variables('factoryId'), '/linkedServices/LS_ADLS_Gen2')]"
+				"[concat(variables('factoryId'), '/datasets/ds_adls_dirstaging')]"
 			]
 		},
 		{
